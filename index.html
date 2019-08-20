@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+  <html>
+    <body>
+      <head>
+        <script type = "text/javascript">
+          <!--
+            function light(sw) {
+            consol.log("light" + sw);
+            var pic;
+              if (sw == 0) {
+                pic = "pic_bulboff.gif"
+                console.log("Got a GET request for /ledOff");
+                //client.publish('esp32/output', 'off');
+              } else{
+                pic = "pic_bulbon.gif"
+                console.log("Got a GET request for /ledOn");
+                //client.publish('esp32/output', 'on');
+              }
+          document.getElementById('myImage').src = pic;
+          }
+        //-->
+      </script>
+  </head>
+
+<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
+
+<p>
+  <button type="button" onclick="light(1)">Light On</button>
+  <button type="button" onclick="light(0)">Light Off</button>
+</p>
+
+
+</body>
+</html>
+

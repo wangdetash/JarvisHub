@@ -1,33 +1,17 @@
-var express = require('express');
-var app = express();
-const port = 8080
 
-var mqtt = require('mqtt');
-var client  = mqtt.connect('mqtt://192.168.1.4');
+var http = require('http');
+var fs = require('fs');
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const PORT=8080; 
 
-// This responds with "Hello World" on the homepage
-app.get('/', function (req, res) {
-   console.log("Got a GET request for the homepage");
-   res.send('MQTT Server');
-})
+fs.readFile('./index.html', function (err, html) {
 
-// This responds a POST request for the homepage
-app.post('/', function (req, res) {
-   console.log("Got a POST request for the homepage");
-   res.send('welcome..');
-})
+    if (err) throw err;    
 
+    http.createServer(function(request, response) {  
+        response.writeHeader(200, {"Content-Type": "text/html"});  
+        response.write(html);  
+        response.end();  
+    }).listen(PORT);
+});
 
-app.get('/LED_ON', function (req, res) {
-   console.log("Got a GET request for /ledOn");
-   client.publish('esp32/output', 'on');
-   res.send('LED STATUS ON');
-})
-
-app.get('/LED_OFF', function (req, res) {
-  console.log("Got a GET request for /ledOff");
-  client.publish('esp32/output', 'off');
-  res.send('LED STATUS OFF');
-})
