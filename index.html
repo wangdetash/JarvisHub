@@ -8,11 +8,11 @@
             console.log("light" + sw);
             var pic;
               if (sw == 0) {
-                var pic = "http://localhost:8080/pic_bulboff.gif"
+                var pic = "http://192.168.1.220:8080/pic_bulboff.gif"
                 console.log("Got a GET request for /ledOff");
                 //client.publish('esp32/output', 'off');
               } else{
-                var pic = "http://localhost:8080/pic_bulbon.gif"
+                var pic = "http://192.168.1.220:8080/pic_bulbon.gif"
                 console.log("Got a GET request for /ledOn");
                 //client.publish('esp32/output', 'on');
               }
@@ -22,7 +22,7 @@
       </script>
   </head>
 
-<img id="myImage" src="http://localhost:8080/pic_bulboff.gif" width="100" height="180">
+<img id="myImage" src="http://192.168.1.220:8080/pic_bulboff.gif" width="100" height="180">
 
 <p>
   <button type="button" onclick="light(1)">Light On</button>
